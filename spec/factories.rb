@@ -5,4 +5,12 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
   end
+
+  factory :restaurant do
+    sequence(:name) {|n| "Zanzibar#{n}"}
+    sequence(:category) {|n| "Pizza#{n}"}
+    sequence(:address) {|n| "6#{n} Murdock St."}
+    city 'Boston'
+    state 'MA'
+  end
 end
