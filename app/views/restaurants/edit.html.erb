@@ -1,0 +1,5 @@
+<h2>Edit <%= @restaurant.name %></h2>
+<%= render "form" %>
+
+<%= link_to "Restaurants", restaurants_path %>
+<%= link_to "Back to #{@restaurant.name}", restaurant_path(@restaurant) %>

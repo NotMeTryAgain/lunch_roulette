@@ -23,10 +23,15 @@
       </ul>
     </nav>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
+  <div>
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <%= content_tag :div, msg, :class => "flash_#{name}" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="column">
     <%= yield %>
-
+  </div>
   </body>
 </html>
