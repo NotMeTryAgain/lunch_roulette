@@ -14,21 +14,31 @@ feature "Authenticated user adds restaurants to list" do
   # [x] If I fail to specify a name I am presented with an error
   # [x] If I provide valid information the restaurant is added to my list
   # [ ] The form is on the restaurants index page
+  # [ ] I can navigate back ot the restaurants index
 
   scenario "successfully adds restaurant" do
     login_as_user(user1)
     click_on "Add Eatery"
-    fill_in "Name", with: restaurant1.name
-    click_button "Add Restaurant"
+    fill_in "Name", with: "Sambo"
+    click_button "Submit"
 
     expect(page).to have_content(restaurant1.name)
+    expect(page).to have_content("Sambo")
   end
 
   scenario "restaurant is not saved" do
     login_as_user(user1)
     click_on "Add Eatery"
-    click_button "Add Restaurant"
-  
-    expect(page).to have_content("can't be blank")
+    click_button "Submit"
+
+    expect(page).to have_content("Name can't be blank")
+  end
+
+  scenario "navigates back to restaurants index without adding anything" do
+    login_as_user(user1)
+    click_on "Add Eatery"
+    click_on "Restaurants"
+
+    expect(page).to have_content(restaurant1.name)
   end
 end

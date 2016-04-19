@@ -12,5 +12,6 @@ FactoryGirl.define do
     sequence(:address) {|n| "6#{n} Murdock St."}
     city 'Boston'
     state 'MA'
+    zip 01234
   end
 end
