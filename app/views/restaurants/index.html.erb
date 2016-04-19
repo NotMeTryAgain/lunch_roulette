@@ -4,7 +4,6 @@
 
 <ul>
 <% @restaurants.each do |restaurant| %>
-  <%= binding.pry %>
   <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
 <% end %>
 </ul>
