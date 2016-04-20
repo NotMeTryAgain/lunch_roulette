@@ -1,0 +1,14 @@
+<h3>Locations</h3>
+
+|<%= form_for @location do |f| %>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.submit "Play!" %>
+  </div>
+
+<% end %>

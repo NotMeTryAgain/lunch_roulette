@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   resources :restaurants
 
-  root "restaurants#index"
+  resources :locations
+
+  root "locations#index"
 end
