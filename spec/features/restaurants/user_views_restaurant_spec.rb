@@ -21,9 +21,7 @@ feature "Authenticated user views restaurant details" do
     expect(page).to have_content(restaurant1.name)
     expect(page).to have_content(restaurant1.category)
     expect(page).to have_content(restaurant1.address)
-    expect(page).to have_content(restaurant1.city)
-    expect(page).to have_content(restaurant1.state)
-    expect(page).to_not have_content(restaurant2.name)
+    expect(page).to have_content(restaurant1.comments)
   end
 
   scenario "can navigate back to restaurants index" do

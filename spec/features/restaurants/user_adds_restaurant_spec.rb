@@ -21,9 +21,9 @@ feature "Authenticated user adds restaurants to list" do
     click_on "Add Eatery"
     fill_in "Name", with: "Sambo"
     click_button "Submit"
-
     expect(page).to have_content(restaurant1.name)
     expect(page).to have_content("Sambo")
+
   end
 
   scenario "restaurant is not saved" do

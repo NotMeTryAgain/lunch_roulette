@@ -10,8 +10,7 @@ FactoryGirl.define do
     sequence(:name) {|n| "Zanzibar#{n}"}
     sequence(:category) {|n| "Pizza#{n}"}
     sequence(:address) {|n| "6#{n} Murdock St."}
-    city 'Boston'
-    state 'MA'
-    zip 01234
+    comments 'Order the blueberry pizza!'
+    user
   end
 end
