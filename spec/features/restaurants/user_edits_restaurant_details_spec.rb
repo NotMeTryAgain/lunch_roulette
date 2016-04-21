@@ -20,17 +20,13 @@ feature "Authenticated user edits restaurant details" do
     fill_in "Name", with: "Baboo"
     fill_in "Category", with: "Pasta"
     fill_in "Address", with: "14 Pleasant St."
-    fill_in "City", with: "Portland"
-    fill_in "State", with: "ME"
-    fill_in "Zip", with: 01235
+    fill_in "Comments", with: "The sauce is to die for.."
     click_on "Submit"
 
 
     expect(page).to have_content("Baboo")
     expect(page).to have_content("Pasta")
-    expect(page).to have_content("14 Pleasant St.")
-    expect(page).to have_content("Portland")
-    expect(page).to have_content("ME")
+    expect(page).to have_content("The sauce is to die for..")
     expect(page).to_not have_content(restaurant1.name)
   end
 
@@ -41,19 +37,17 @@ feature "Authenticated user edits restaurant details" do
     fill_in "Name", with: ""
     fill_in "Category", with: "PPPPPPPPPPPPPPPPPPpPPPPPPPPPPPPPPPPPPPPPPPPPPPPP,
       PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"
-    fill_in "Address", with: "14 Pleasant Stttttttttttttttttttttttttttttttttttt,
-    sssssssssshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshshsh"
-    fill_in "City", with: "Portlandliuahsdliuhwfliduhalsiduhalisudlaiusdhliuags"
-    fill_in "State", with: "MEP"
-    fill_in "Zip", with: "aaaaaa"
+    fill_in "Address", with: "ILIWGCGKJHSGKJHGkjhkjhkjhdflvjhsdkjbsdljbsjdhbvvj
+    kjsdbvjbsdcvjbsdcvbsdbcvkjsbvlkjadlvkjbdvlkjbsdlkvjvsdkjbcvskdjbcv,kjsdbvkj"
+    fill_in "Comments", with: "SOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSO
+    SOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSO
+    SOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSO
+    SOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOSOS"
     click_on "Submit"
 
     expect(page).to have_content("Name can't be blank")
     expect(page).to have_content("Category is too long")
     expect(page).to have_content("Address is too long")
-    expect(page).to have_content("City is too long")
-    expect(page).to have_content("State is too long")
-    expect(page).to have_content("Zip is too long")
   end
 
   scenario "decides against editing, navigates back to restaurant show page" do
