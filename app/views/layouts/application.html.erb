@@ -7,8 +7,9 @@
     <title><%= content_for?(:title) ? yield(:title) : "Lunch Roulette" %></title>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => false %>
     <%= csrf_meta_tags %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_PLACES_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
   </head>
 
   <body>
@@ -30,8 +31,12 @@
       <% end %>
     <% end %>
   </div>
-  <div class="column">
-    <%= yield %>
+
+  <div class="row">
+    <div class="medium-8 medium-centered large-6 large-centered columns">
+      <%= yield %>
+    </div>
   </div>
+
   </body>
 </html>
