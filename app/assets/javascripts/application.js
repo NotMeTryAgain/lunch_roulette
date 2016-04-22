@@ -19,6 +19,7 @@ $(function(){ $(document).foundation(); });
 
 var map;
 var infoWindow;
+var userLocation;
 var service;
 var markers = [];
 var results = [];
@@ -34,6 +35,7 @@ function initMap() {
     zoom: 14
   });
   infoWindow = new google.maps.InfoWindow({map: map});
+  userLocation = new google.maps.InfoWindow({map: map});
   service = new google.maps.places.PlacesService(map);
 
   if (navigator.geolocation) {
@@ -43,8 +45,8 @@ function initMap() {
         lng: position.coords.longitude
       };
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('You..');
+      userLocation.setPosition(pos);
+      userLocation.setContent('You..');
       map.setCenter(pos);
       service.nearbySearch({
         location: pos,
@@ -59,9 +61,10 @@ function initMap() {
     }
 
   google.maps.event.addListener(map, 'rightclick', function(event) {
+    marker.setMap(null);
     map.setCenter(event.latLng);
     clearResults(markers);
-
+    locations = [];
     service.nearbySearch({
       location: event.latLng,
       radius: 1000,
