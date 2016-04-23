@@ -1,3 +1,4 @@
+// $(document).ready(function() {
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -17,9 +18,10 @@
 
 $(function(){ $(document).foundation(); });
 
+
 var map;
 var infoWindow;
-var userLocation;
+// var userLocation;
 var service;
 var markers = [];
 var results = [];
@@ -29,14 +31,17 @@ var marker;
 var placeLoc;
 var locations = [];
 
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     // center: {lat: -34.397, lng: 150.644},
     zoom: 14
   });
+
+  var userLocation = new google.maps.InfoWindow({map: map});
   infoWindow = new google.maps.InfoWindow({map: map});
-  userLocation = new google.maps.InfoWindow({map: map});
   service = new google.maps.places.PlacesService(map);
+  infoWindow.close();
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -50,7 +55,7 @@ function initMap() {
       map.setCenter(pos);
       service.nearbySearch({
         location: pos,
-        radius: 1000,
+        radius: 5000,
         types: ['restaurant', 'cafe']
       }, callback);
     }, function() {
@@ -102,14 +107,14 @@ function callback(results, status) {
 // }
 
 function shuffle(array) {
-    for (var i = 0; i < array.length - 1; i++) {
-        var j = i + Math.floor(Math.random() * (array.length - i));
+  for (var i = 0; i < array.length - 1; i++) {
+      var j = i + Math.floor(Math.random() * (array.length - i));
 
-        var temp = array[j];
-        array[j] = array[i];
-        array[i] = temp;
-    }
-    return array[j];
+      var temp = array[j];
+      array[j] = array[i];
+      array[i] = temp;
+  }
+  return array[j];
 }
 
 var rando;
@@ -121,8 +126,8 @@ $(function(){
     rando = shuffle(locations);
     createMarker(rando);
     $('.establishment_name').replaceWith('<div class="establishment_name">'+
-    '<ul>'+'<li>'+ rando.name +'</li>'+'<li>'+ rando.vicinity +'</li>'+'</ul>'+
-    '</div>');
+    '<ul>'+'<li>'+ '<h3>'+ rando.name +'</h3>' +'</li>'+'<li>'+ rando.vicinity +
+    '</li>'+'</ul>'+'</div>');
   });
 });
 
@@ -133,6 +138,7 @@ function createMarker(place) {
     animation: google.maps.Animation.DROP,
     position: placeLoc
   });
+
 
   google.maps.event.addListener(marker, 'click', function() {
     infoWindow.setContent(place.name);
@@ -155,3 +161,5 @@ function clearMarkers(markers) {
   }
   markers = [];
 }
+
+// });
