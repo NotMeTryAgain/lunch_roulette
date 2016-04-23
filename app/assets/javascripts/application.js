@@ -1,4 +1,3 @@
-// $(document).ready(function() {
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -21,7 +20,6 @@ $(function(){ $(document).foundation(); });
 
 var map;
 var infoWindow;
-// var userLocation;
 var service;
 var markers = [];
 var results = [];
@@ -161,5 +159,3 @@ function clearMarkers(markers) {
   }
   markers = [];
 }
-
-// });
