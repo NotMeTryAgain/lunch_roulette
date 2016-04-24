@@ -16,6 +16,7 @@ feature "Authenticated user deletes restaurant" do
 
   scenario "restaraunt is removed" do
     login_as_user(user1)
+    click_on "Favorites"
     click_on restaurant1.name
     click_on "Delete"
 
