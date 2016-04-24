@@ -13,8 +13,17 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
+
+  <nav class="top-bar">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li>
+          <h3><%= link_to 'LunchRoulette', root_path %></h3>
+        </li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
         <% if user_signed_in? %>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <% else %>
@@ -22,7 +31,9 @@
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
         <% end %>
       </ul>
-    </nav>
+    </div>
+  </nav>
+
 
   <div>
     <% flash.each do |name, msg| %>
