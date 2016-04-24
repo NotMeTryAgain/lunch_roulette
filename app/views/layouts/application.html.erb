@@ -13,37 +13,40 @@
   </head>
 
   <body>
-<div class="row">
-  <div class="medium-12 medium-centered large-10 large-centered columns">
-  <nav class="top-bar">
-    <div class="top-bar-left">
-      <ul class="menu">
-        <li>
-          <h3><%= link_to 'LunchRoulette', root_path %></h3>
-        </li>
-      </ul>
+  <div class="row">
+    <div class="medium-12 medium-centered large-10 large-centered columns">
+      <nav class="top-bar">
+        <div class="top-bar-left">
+          <ul class="menu">
+            <li>
+              <h3><%= link_to 'LunchRoulette', root_path %></h3>
+            </li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+            <% if user_signed_in? %>
+              <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to 'Favorites', restaurants_path %></li>
+            <% else %>
+              <li><%= link_to 'Sign In', new_user_session_path %></li>
+              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
     </div>
-    <div class="top-bar-right">
-      <ul class="menu">
-        <% if user_signed_in? %>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to 'Favorites', restaurants_path %></li>
-        <% else %>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+  </div>
+  <div class="row">
+    <div class="text-center">
+      <div>
+        <% flash.each do |name, msg| %>
+          <% if msg.is_a?(String) %>
+            <%= content_tag :div, msg, :class => "flash_#{name}" %>
+          <% end %>
         <% end %>
-      </ul>
+      </div>
     </div>
-  </nav>
-</div>
-</div>
-
-  <div>
-    <% flash.each do |name, msg| %>
-      <% if msg.is_a?(String) %>
-        <%= content_tag :div, msg, :class => "flash_#{name}" %>
-      <% end %>
-    <% end %>
   </div>
 
   <div class="row">
