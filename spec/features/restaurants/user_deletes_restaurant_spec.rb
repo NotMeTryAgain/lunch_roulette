@@ -10,18 +10,24 @@ feature "Authenticated user deletes restaurant" do
   # Because I refuse to dine there anymore
 
   # ACCEPTANCE CRITERIA
-  # [ ] I can click a delete button on the restaraunt show page
-  # [ ] The restaurant is removed from the restaurants index
-  # [ ] I am taken back to the restaurants index
+  # [x] I can click a delete button on the restaraunt show page
+  # [x] The restaurant is removed from the restaurants index
+  # [x] I am taken back to the restaurants index
 
   scenario "restaraunt is removed" do
     login_as_user(user1)
     click_on "Favorites"
-    click_on restaurant1.name
+    click_on "Add Eatery"
+    fill_in "Name", with: "Pizza Hut"
+    click_on "Submit"
+
+    expect(page).to have_content("Pizza Hut")
+
+    click_on "Pizza Hut"
     click_on "Delete"
 
-    expect(page).to_not have_content(restaurant1.name)
-    expect(page).to have_content(restaurant2.name)
+    expect(page).to_not have_content("Pizza Hut")
     expect(page).to have_content("Restaurant Destroyed")
+    expect(page.current_path).to eq restaurants_path
   end
 end

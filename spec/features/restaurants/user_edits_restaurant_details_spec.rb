@@ -2,8 +2,7 @@ require 'rails_helper'
 
 feature "Authenticated user edits restaurant details" do
   let!(:user1) { FactoryGirl.create(:user) }
-  let!(:restaurant1) { FactoryGirl.create(:restaurant) }
-  let!(:restaurant2) { FactoryGirl.create(:restaurant) }
+  let!(:restaurant1) { FactoryGirl.create(:restaurant, user_id: user1.id) }
 
   # As an authenticated user
   # I want to edit restaurant details

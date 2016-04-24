@@ -22,7 +22,7 @@ feature "Authenticated user adds restaurants to list" do
     click_on "Add Eatery"
     fill_in "Name", with: "Sambo"
     click_button "Submit"
-    expect(page).to have_content(restaurant1.name)
+
     expect(page).to have_content("Sambo")
 
   end
@@ -42,6 +42,6 @@ feature "Authenticated user adds restaurants to list" do
     click_on "Add Eatery"
     click_on "Restaurants"
 
-    expect(page).to have_content(restaurant1.name)
+    expect(page.current_path).to eq restaurants_path
   end
 end
