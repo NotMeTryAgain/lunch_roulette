@@ -18,6 +18,7 @@ feature "Authenticated user adds restaurants to list" do
 
   scenario "successfully adds restaurant" do
     login_as_user(user1)
+    click_on "Favorites"
     click_on "Add Eatery"
     fill_in "Name", with: "Sambo"
     click_button "Submit"
@@ -28,6 +29,7 @@ feature "Authenticated user adds restaurants to list" do
 
   scenario "restaurant is not saved" do
     login_as_user(user1)
+    click_on "Favorites"
     click_on "Add Eatery"
     click_button "Submit"
 
@@ -36,6 +38,7 @@ feature "Authenticated user adds restaurants to list" do
 
   scenario "navigates back to restaurants index without adding anything" do
     login_as_user(user1)
+    click_on "Favorites"
     click_on "Add Eatery"
     click_on "Restaurants"
 

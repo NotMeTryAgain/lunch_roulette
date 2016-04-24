@@ -16,6 +16,7 @@ feature "Authenticated user views restaurant details" do
 
   scenario "views details" do
     login_as_user(user1)
+    click_on "Favorites"
     click_on restaurant1.name
 
     expect(page).to have_content(restaurant1.name)
@@ -26,6 +27,7 @@ feature "Authenticated user views restaurant details" do
 
   scenario "can navigate back to restaurants index" do
     login_as_user(user1)
+    click_on "Favorites"
     click_on restaurant1.name
     click_link "Restaurants"
 

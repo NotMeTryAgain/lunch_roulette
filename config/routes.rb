@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :restaurants
 
-  root "restaurants#index"
+  root "home#index"
 end

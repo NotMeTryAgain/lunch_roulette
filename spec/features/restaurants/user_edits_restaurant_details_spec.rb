@@ -15,6 +15,7 @@ feature "Authenticated user edits restaurant details" do
 
   scenario "successfully edits details" do
     login_as_user(user1)
+    click_on "Favorites"
     click_on restaurant1.name
     click_on "Edit"
     fill_in "Name", with: "Baboo"
@@ -32,6 +33,7 @@ feature "Authenticated user edits restaurant details" do
 
   scenario "somehow botches the detail edit" do
     login_as_user(user1)
+    click_on "Favorites"
     click_on restaurant1.name
     click_on "Edit"
     fill_in "Name", with: ""
@@ -52,6 +54,7 @@ feature "Authenticated user edits restaurant details" do
 
   scenario "decides against editing, navigates back to restaurant show page" do
     login_as_user(user1)
+    click_on "Favorites"
     click_on restaurant1.name
     click_on "Edit"
     click_on "Back to #{restaurant1.name}"

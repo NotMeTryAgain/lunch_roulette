@@ -16,6 +16,44 @@
 
  */
 
+ body {
+   background-image: image-url("lumber_boards.jpeg");
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-size: cover;
+   background-attachment: fixed;
+ };
+
  li {
    list-style-type: none;
  }
+
+ #map-container{
+border: 2px solid black;
+width: 650px;
+height: 400px;
+background-color: #ccc;
+}
+
+#map{
+border: 2px solid black;
+width: 650px;
+height: 400px;
+max-width:100%;
+}
+
+.debug_blue {
+  background-color: blue;
+}
+
+#showbutton {
+  padding-top: 10px;
+}
+
+.top-bar {
+  // background-image: image-url('checkerwood.jpeg');
+  // background-repeat: no-repeat;
+  // background-position: center center;
+  // background-size: cover;
+  margin-bottom: 2em;
+}

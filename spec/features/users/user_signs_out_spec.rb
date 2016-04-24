@@ -17,6 +17,6 @@ feature "user signs out" do
     click_button "Log In"
     click_link "Sign Out"
 
-    expect(page).to have_content "Sign in.. or sign up before playing!"
+    expect(page).to have_content "See you next time!"
   end
 end
