@@ -2,8 +2,7 @@ require 'rails_helper'
 
 feature "Authenticated user views restaurant details" do
   let!(:user1) { FactoryGirl.create(:user) }
-  let!(:restaurant1) { FactoryGirl.create(:restaurant) }
-  let!(:restaurant2) { FactoryGirl.create(:restaurant) }
+  let!(:restaurant1) { FactoryGirl.create(:restaurant, user_id: user1.id) }
 
   # As an authenticated user
   # I want to view restaurant details
@@ -32,6 +31,6 @@ feature "Authenticated user views restaurant details" do
     click_link "Restaurants"
 
     expect(page).to have_content(restaurant1.name)
-    expect(page).to have_content(restaurant2.name)
+    expect(page.current_path).to eq restaurants_path
   end
 end
