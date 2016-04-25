@@ -17,29 +17,35 @@
  */
 
  body {
+  //  background-color: #E98130;
    background-image: image-url("lumber_boards.jpeg");
    background-repeat: no-repeat;
    background-position: center center;
    background-size: cover;
    background-attachment: fixed;
+  font-family: 'Bangers', cursive;
  };
 
  li {
    list-style-type: none;
  }
 
+ h3 {
+   font-family: 'Bangers', cursive;
+ }
+
  #map-container{
 border: 2px solid black;
 width: 650px;
 height: 400px;
-background-color: #ccc;
 }
 
 #map{
-border: 2px solid black;
+border: 3px solid white;
 width: 650px;
 height: 400px;
 max-width:100%;
+background-color: rgba(0, 0, 0, 0.5);
 }
 
 .debug_blue {
@@ -47,7 +53,9 @@ max-width:100%;
 }
 
 #showbutton {
-  padding-top: 10px;
+  padding: 10px 40px 8px 40px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid white;
 }
 
 .top-bar {
@@ -56,4 +64,5 @@ max-width:100%;
   // background-position: center center;
   // background-size: cover;
   margin-bottom: 2em;
+  // background-color: rgba(3, 51, 99, 0.75);
 }

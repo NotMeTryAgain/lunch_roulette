@@ -10,6 +10,7 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => false %>
     <%= csrf_meta_tags %>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_PLACES_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
+    <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
@@ -19,7 +20,7 @@
         <div class="top-bar-left">
           <ul class="menu">
             <li>
-              <h3><%= link_to 'LunchRoulette', root_path %></h3>
+              <h3><%= link_to 'Lunch Roulette', root_path %></h3>
             </li>
           </ul>
         </div>
@@ -37,17 +38,10 @@
       </nav>
     </div>
   </div>
-  <div class="row">
+
     <div class="text-center">
-      <div>
-        <% flash.each do |name, msg| %>
-          <% if msg.is_a?(String) %>
-            <%= content_tag :div, msg, :class => "flash_#{name}" %>
-          <% end %>
-        <% end %>
-      </div>
+      <%= render "layouts/messages" %>
     </div>
-  </div>
 
   <div class="row">
     <div class="medium-8 medium-centered large-6 large-centered columns">
