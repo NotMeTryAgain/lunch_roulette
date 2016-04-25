@@ -17,13 +17,12 @@
  */
 
  body {
-  //  background-color: #E98130;
    background-image: image-url("lumber_boards.jpeg");
    background-repeat: no-repeat;
    background-position: center center;
    background-size: cover;
    background-attachment: fixed;
-  font-family: 'Bangers', cursive;
+   font-family: 'Bangers', cursive;
  };
 
  li {
@@ -35,7 +34,6 @@
  }
 
  #map-container{
-border: 2px solid black;
 width: 650px;
 height: 400px;
 }
@@ -59,10 +57,6 @@ background-color: rgba(0, 0, 0, 0.5);
 }
 
 .top-bar {
-  // background-image: image-url('checkerwood.jpeg');
-  // background-repeat: no-repeat;
-  // background-position: center center;
-  // background-size: cover;
   margin-bottom: 2em;
   // background-color: rgba(3, 51, 99, 0.75);
 }
