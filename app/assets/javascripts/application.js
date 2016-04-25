@@ -15,8 +15,7 @@
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
-
+$(document).foundation();
 
 var map;
 var infoWindow;
@@ -53,7 +52,7 @@ function initMap() {
       map.setCenter(pos);
       service.nearbySearch({
         location: pos,
-        radius: 5000,
+        radius: 1000,
         types: ['restaurant', 'cafe']
       }, callback);
     }, function() {
@@ -93,27 +92,27 @@ function callback(results, status) {
   }
 }
 
-// function shuffle(array) {
-//   var m = array.length, t, i;
-//   while (m > 0) {
-//     i = Math.floor(Math.random() * m--);
-//     t = array[m];
-//     array[m] = array[i];
-//     array[i] = t;
-//   }
-//   return array[i];
-// }
-
 function shuffle(array) {
-  for (var i = 0; i < array.length - 1; i++) {
-      var j = i + Math.floor(Math.random() * (array.length - i));
-
-      var temp = array[j];
-      array[j] = array[i];
-      array[i] = temp;
+  var m = array.length, t, i;
+  while (m > 0) {
+    i = Math.floor(Math.random() * m--);
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
   }
-  return array[j];
+  return array[i];
 }
+
+// function shuffle(array) {
+//   for (var i = 0; i < array.length - 1; i++) {
+//       var j = i + Math.floor(Math.random() * (array.length - i));
+//
+//       var temp = array[j];
+//       array[j] = array[i];
+//       array[i] = temp;
+//   }
+//   return array[j];
+// }
 
 var rando;
 
@@ -123,9 +122,9 @@ $(function(){
     clearMarkers(markers);
     rando = shuffle(locations);
     createMarker(rando);
-    $('.establishment_name').replaceWith('<div class="establishment_name">'+
+    $('.establishment_name').replaceWith('<div class="establishment_name">'+ '<div class="callout">'+
     '<ul>'+'<li>'+ '<h3>'+ rando.name +'</h3>' +'</li>'+'<li>'+ rando.vicinity +
-    '</li>'+'</ul>'+'</div>');
+    '</li>'+'</ul>'+'</div>'+'</div>');
   });
 });
 
