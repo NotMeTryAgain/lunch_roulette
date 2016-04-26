@@ -22,7 +22,6 @@ var infoWindow;
 var service;
 var markers = [];
 var results = [];
-var names = [];
 var pos;
 var marker;
 var placeLoc;
@@ -39,6 +38,7 @@ function initMap() {
   infoWindow = new google.maps.InfoWindow({map: map});
   service = new google.maps.places.PlacesService(map);
   infoWindow.close();
+
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -74,7 +74,6 @@ function initMap() {
     }, callback);
   });
 }
-
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
        infoWindow.setPosition(pos);
        infoWindow.setContent(browserHasGeolocation ?
@@ -82,14 +81,14 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                              'Error: Your browser doesn\'t support geolocation.');
      }
 
+
 function callback(results, status) {
-  if (status === google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      markers.push(createMarker(results[i]));
-      names.push(results[i].name);
-      locations.push(results[i]);
-    }
-  }
+ if (status === google.maps.places.PlacesServiceStatus.OK) {
+   for (var i = 0; i < results.length; i++) {
+     markers.push(createMarker(results[i]));
+     locations.push(results[i]);
+   }
+ }
 }
 
 function shuffle(array) {
@@ -103,17 +102,6 @@ function shuffle(array) {
   return array[i];
 }
 
-// function shuffle(array) {
-//   for (var i = 0; i < array.length - 1; i++) {
-//       var j = i + Math.floor(Math.random() * (array.length - i));
-//
-//       var temp = array[j];
-//       array[j] = array[i];
-//       array[i] = temp;
-//   }
-//   return array[j];
-// }
-
 var rando;
 
 $(function(){
@@ -121,10 +109,19 @@ $(function(){
     marker.setMap(null);
     clearMarkers(markers);
     rando = shuffle(locations);
+    service.getDetails({
+      placeId: rando.place_id
+    }, function(place, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        $('.establishment_name').replaceWith('<div class="establishment_name">'+
+        '<div class="callout">'+'<ul>'+'<li>'+ '<h3>'+place.name+'</h3>' +
+        '</li>'+'<li>'+place.vicinity+'</li>'+'<li>'+'<a href='+'"'+
+        place.website+'"'+'>'+"Website"+'</a>'+'</li>'+'</ul>'+'</div>'+
+        '</div>');
+        // debugger;
+      }
+    });
     createMarker(rando);
-    $('.establishment_name').replaceWith('<div class="establishment_name">'+ '<div class="callout">'+
-    '<ul>'+'<li>'+ '<h3>'+ rando.name +'</h3>' +'</li>'+'<li>'+ rando.vicinity +
-    '</li>'+'</ul>'+'</div>'+'</div>');
   });
 });
 
@@ -135,7 +132,6 @@ function createMarker(place) {
     animation: google.maps.Animation.DROP,
     position: placeLoc
   });
-
 
   google.maps.event.addListener(marker, 'click', function() {
     infoWindow.setContent(place.name);
