@@ -113,9 +113,12 @@ $(function(){
       placeId: rando.place_id
     }, function(place, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        $('.establishment_name').replaceWith('<div class="establishment_name">'+ '<div class="callout">'+
-        '<ul>'+'<li>'+ '<h3>'+ place.name +'</h3>' +'</li>'+'<li>'+ '<a href='+'"'+place.website+'"'+'>'+"Website"+'</a>'+
-        '</li>'+'</ul>'+'</div>'+'</div>');
+        $('.establishment_name').replaceWith('<div class="establishment_name">'+
+        '<div class="callout">'+'<ul>'+'<li>'+ '<h3>'+place.name+'</h3>' +
+        '</li>'+'<li>'+place.vicinity+'</li>'+'<li>'+'<a href='+'"'+
+        place.website+'"'+'>'+"Website"+'</a>'+'</li>'+'</ul>'+'</div>'+
+        '</div>');
+        // debugger;
       }
     });
     createMarker(rando);
