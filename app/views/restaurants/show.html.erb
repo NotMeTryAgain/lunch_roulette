@@ -1,10 +1,12 @@
 <h2><%= @restaurant.name %></h2>
 
+<div class="form_style">
 <ul>
-  <li><strong>Category:</strong> <%= @restaurant.category %></li>
-  <li><strong>Address:</strong> <%= @restaurant.address %></li>
-  <li><strong>Comments:</strong> <%= @restaurant.comments %></li>
+  <li><u>Category:</u><br> <%= @restaurant.category %></li>
+  <li><u>Address:</u><br> <%= @restaurant.address %></li>
+  <li><u>Comments:</u><br> <%= @restaurant.comments %></li>
 </ul>
+</div>
 
 <%= link_to 'Edit',  edit_restaurant_path %>
 <%= link_to 'Restaurants', restaurants_path %>
