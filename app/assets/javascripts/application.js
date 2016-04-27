@@ -24,13 +24,13 @@ var markers = [];
 var results = [];
 var pos;
 var marker;
+// marker.metadata = {type: "point", id: "iw-container"};
 var placeLoc;
 var locations = [];
 
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    // center: {lat: -34.397, lng: 150.644},
     zoom: 14
   });
 
@@ -105,7 +105,7 @@ function shuffle(array) {
 var rando;
 
 $(function(){
-  $('#showbutton').on('click', function(){
+  $('#play_button').on('click', function(){
     marker.setMap(null);
     clearMarkers(markers);
     rando = shuffle(locations);
@@ -139,6 +139,7 @@ function createMarker(place) {
   });
   return marker;
 }
+
 
 function clearResults(markers) {
   for (var m in markers) {

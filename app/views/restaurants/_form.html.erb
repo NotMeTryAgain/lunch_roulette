@@ -1,3 +1,4 @@
+<div class="form_style">
 <%= form_for @restaurant do |f| %>
   <%= f.label :name %><br>
   <%= f.text_field :name %>
@@ -11,5 +12,6 @@
   <%= f.label :comments %><br>
   <%= f.text_field :comments %>
   <br>
-  <%= f.submit "Submit" %>
+  <%= f.submit "Submit", id: "play_button" %>
 <% end %>
+</div>
