@@ -14,13 +14,13 @@ feature "user sessions in unique" do
   scenario "session is unique" do
     login_as_user(user1)
     click_on "Favorites"
-    click_on "Add Eatery"
+    click_on "Add New Eatery!"
     fill_in "Name", with: "Zambino's"
     click_on "Submit"
     click_on "Sign Out"
     login_as_user(user2)
     click_on "Favorites"
-    click_on "Add Eatery"
+    click_on "Add New Eatery!"
     fill_in "Name", with: "TumYum"
     click_on "Submit"
 

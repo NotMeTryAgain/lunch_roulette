@@ -28,7 +28,7 @@ feature "Authenticated user views restaurant details" do
     login_as_user(user1)
     click_on "Favorites"
     click_on restaurant1.name
-    click_link "Restaurants"
+    click_link "Favorites"
 
     expect(page).to have_content(restaurant1.name)
     expect(page.current_path).to eq restaurants_path

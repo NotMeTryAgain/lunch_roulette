@@ -52,7 +52,7 @@ function initMap() {
       map.setCenter(pos);
       service.nearbySearch({
         location: pos,
-        radius: 1000,
+        radius: 5000,
         types: ['restaurant', 'cafe']
       }, callback);
     }, function() {

@@ -17,7 +17,7 @@ feature "Authenticated user deletes restaurant" do
   scenario "restaraunt is removed" do
     login_as_user(user1)
     click_on "Favorites"
-    click_on "Add Eatery"
+    click_on "Add New Eatery!"
     fill_in "Name", with: "Pizza Hut"
     click_on "Submit"
 
