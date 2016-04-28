@@ -24,7 +24,6 @@ var markers = [];
 var results = [];
 var pos;
 var marker;
-// marker.metadata = {type: "point", id: "iw-container"};
 var placeLoc;
 var locations = [];
 
