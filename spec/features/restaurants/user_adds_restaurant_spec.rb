@@ -40,7 +40,7 @@ feature "Authenticated user adds restaurants to list" do
     login_as_user(user1)
     click_on "Favorites"
     click_on "Add New Eatery!"
-    click_on "Restaurants"
+    click_on "Favorites"
 
     expect(page.current_path).to eq restaurants_path
   end
