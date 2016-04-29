@@ -1,3 +1,27 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#map-container{
+width: 650px;
+height: 400px;
+}
+
+#map{
+border: 3px solid white;
+width: 650px;
+height: 400px;
+max-width:100%;
+background-color: rgba(0, 0, 0, 0.5);
+}
+
+.gm-style-iw {
+  font-family: 'Bangers', cursive;
+}
+
+#play_button {
+  padding: 10px 40px 8px 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid white;
+  color: white;
+}
