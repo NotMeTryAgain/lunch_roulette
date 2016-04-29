@@ -50,6 +50,16 @@
    font-size: 1.1em;
  }
 
+ .top-bar {
+   margin-bottom: 2em;
+   // background-color: rgba(0, 0, 0, 0.6);
+   border-bottom: 2px solid white;
+   h3 {
+     padding-left: 3px;
+   }
+   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+ }
+
 .form_style {
   padding: 5px;
   background-color: rgba(150, 150, 150, 0.5);
@@ -74,46 +84,11 @@
   }
 }
 
-
- #map-container{
-width: 650px;
-height: 400px;
-}
-
-#map{
-border: 3px solid white;
-width: 650px;
-height: 400px;
-max-width:100%;
-background-color: rgba(0, 0, 0, 0.5);
+.flash_notice {
+  color: yellow;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .debug_blue {
   background-color: blue;
-}
-
-#play_button {
-  padding: 10px 40px 8px 40px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 2px solid white;
-  color: white;
-}
-
-.gm-style-iw {
-  font-family: 'Bangers', cursive;
-}
-
-.top-bar {
-  margin-bottom: 2em;
-  // background-color: rgba(0, 0, 0, 0.6);
-  border-bottom: 2px solid white;
-  h3 {
-    padding-left: 3px;
-  }
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-
-.flash_notice {
-  color: yellow;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
