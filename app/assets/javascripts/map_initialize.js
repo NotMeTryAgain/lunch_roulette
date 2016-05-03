@@ -13,7 +13,6 @@ function initMap() {
   service = new google.maps.places.PlacesService(map);
   infoWindow.close();
 
-
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       pos = {
@@ -34,11 +33,14 @@ function initMap() {
   } else {
       handleLocationError(false, infoWindow, map.getCenter());
     }
+
   google.maps.event.addListener(map, 'rightclick', function(event) {
-    marker.setMap(null);
+    if (markers.length > 0) {
+      marker.setMap(null);
+      clearResults(markers);
+      locations = [];
+    }
     map.setCenter(event.latLng);
-    clearResults(markers);
-    locations = [];
     service.nearbySearch({
       location: event.latLng,
       radius: 1000,
@@ -58,7 +60,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
    'Error: The Geolocation service failed.' :
    'Error: Your browser doesn\'t support geolocation.');
 }
-
 
 function callback(results, status) {
  if (status === google.maps.places.PlacesServiceStatus.OK) {
