@@ -3,7 +3,6 @@ function initMap() {
     zoom: 14
   });
 
-  // var userLocation = new google.maps.InfoWindow({map: map});
   var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
   var userLocation = new google.maps.Marker({
     map: map,
@@ -23,11 +22,10 @@ function initMap() {
       };
 
       userLocation.setPosition(pos);
-      // userLocation.setContent('You..');
       map.setCenter(pos);
       service.nearbySearch({
         location: pos,
-        radius: 2000,
+        radius: 1000,
         types: ['restaurant', 'cafe']
       }, callback);
     }, function() {
