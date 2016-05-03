@@ -3,7 +3,13 @@ function initMap() {
     zoom: 14
   });
 
-  var userLocation = new google.maps.InfoWindow({map: map});
+  // var userLocation = new google.maps.InfoWindow({map: map});
+  var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+  var userLocation = new google.maps.Marker({
+    map: map,
+    animation: google.maps.Animation.DROP,
+    icon: image
+  });
   infoWindow = new google.maps.InfoWindow({map: map});
   service = new google.maps.places.PlacesService(map);
   infoWindow.close();
@@ -17,11 +23,11 @@ function initMap() {
       };
 
       userLocation.setPosition(pos);
-      userLocation.setContent('You..');
+      // userLocation.setContent('You..');
       map.setCenter(pos);
       service.nearbySearch({
         location: pos,
-        radius: 1000,
+        radius: 2000,
         types: ['restaurant', 'cafe']
       }, callback);
     }, function() {
@@ -40,6 +46,11 @@ function initMap() {
       radius: 1000,
       types: ['restaurant', 'cafe']
     }, callback);
+  });
+
+  google.maps.event.addListener(userLocation, 'click', function() {
+    infoWindow.setContent("You..");
+    infoWindow.open(map, this);
   });
 }
 
