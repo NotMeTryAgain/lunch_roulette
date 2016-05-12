@@ -62,10 +62,25 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 function callback(results, status) {
- if (status === google.maps.places.PlacesServiceStatus.OK) {
-   for (var i = 0; i < results.length; i++) {
-     markers.push(createMarker(results[i]));
-     locations.push(results[i]);
-   }
- }
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      markers.push(createMarker(results[i]));
+      locations.push(results[i]);
+    }
+
+  }
+  if (results.length === 0) {
+    $('#messages').replaceWith(
+      '<div class="text-center" id="messages">' +
+        '<div class="flash_notice">' +
+          "No establishments found in the immediate vicinity" +
+        '</div>' +
+      '</div>'
+    );
+    $(function() {
+       $('.flash_notice').delay(500).fadeIn('normal', function() {
+          $(this).delay(4500).fadeOut();
+       });
+    });
+  }
 }
